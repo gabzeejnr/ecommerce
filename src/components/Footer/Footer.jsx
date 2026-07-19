@@ -1,7 +1,6 @@
-import { NavLink } from "react-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { data, socialMedia } from "../../data/companyData.js";
-import styles from "./Footer.module.scss"
+import styles from "./Footer.module.scss";
 
 export default function Footer({ leftName, rightName }) {
     return (

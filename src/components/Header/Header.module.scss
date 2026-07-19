@@ -34,14 +34,18 @@ header {
 
             .count{
                 position: absolute;
-                top: .8em;
-                right: .5em;
+                top: 1em;
+                right: .8em;
                 background: red;
-                height: .8em;
-                width: .8em;
-                border-radius: 50%;
+                height: 1.1em;
+                min-width: 1.1em;
+                padding: 0 .3em;
+                box-sizing: border-box;
+                border-radius: 1em;
                 color: var(--bg);
-                font-size: .7em;
+                font-size: .5em;
+                line-height: 1;
+                font-weight: 600;
                 @include complete-flex;
             }
         }

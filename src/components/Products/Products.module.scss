@@ -1,3 +1,13 @@
+@mixin heart {
+    margin: 1em 1em 0 auto;
+    background: var(--shadow);
+    max-width: fit-content;
+    max-height: fit-content;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .products {
     padding: 0 2em;
     display: grid;
@@ -31,14 +41,13 @@
                     width: 100%;
                     z-index: 1;
 
-                    .heart{
-                        margin: 1em 1em 0 auto;
-                        background: var(--shadow);
-                        max-width: fit-content;
-                        max-height: fit-content;
-                        padding: 5px;
-                        border-radius: 50%;
-                        cursor: pointer;
+                    .heart {
+                        @include heart;
+                    }
+
+                    .liked {
+                        @include heart;
+                        color: red;
                     }
 
                     button {

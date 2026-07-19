@@ -1,11 +1,8 @@
-import { useState } from "react";
 import Footer from "../components/Footer/Footer.jsx";
 import Header from "../components/Header/Header.jsx";
 import { leftName, rightName } from "../utils/brandName.js";
 
-export default function MainLayout({ children }) {
-
-  const [likeCount, setLikeCount] = useState()
+export default function MainLayout({ children, likeCount }) {
 
   return (
     <>

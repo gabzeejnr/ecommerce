@@ -6,9 +6,9 @@ import styles from "./Products.module.scss";
 import { useState, useEffect } from "react";
 import { getShoes } from "../../services/services.js";
 
-export default function Header() {
+export default function Products({ likeCount, setLikeCount }) {
 
-    const [count, setCount] = useState(0);
+    const [likedShoes, setLikedShoes] = useState({})
     const [shoeData, setShoeData] = useState([])
 
 
@@ -22,9 +22,10 @@ export default function Header() {
 
     }, [])
 
-    function increaseLike() {
-        setCount(prev => prev + 1);
-        console.log(count);
+    function increaseLike(shoeId) {
+        const nowLiked = !likedShoes[shoeId];
+        setLikedShoes(prev => ({ ...prev, [shoeId]: nowLiked }));
+        setLikeCount(prev => nowLiked ? prev + 1 : prev - 1);
     }
 
     return (
@@ -33,7 +34,7 @@ export default function Header() {
                 <div className={styles.product} key={shoe.id}>
                     <div className={styles["image-holder"]}>
                         <div className={styles["hovered-element"]}>
-                            <div className={styles.heart} onClick={increaseLike}>
+                            <div className={likedShoes[shoe.id] ? styles.liked : styles.heart} onClick={() => increaseLike(shoe.id)}>
                                 <FontAwesomeIcon icon={faHeart} />
                             </div>
                             <button>
@@ -42,7 +43,7 @@ export default function Header() {
                             </button>
                         </div>
 
-                        <img id="images" src={shoe.image ? `../../public/Products/${shoe.image}` : fallBack} alt={shoe.image ? shoe.name : "Fall-back image"} />
+                        <img id="images" src={shoe.image ? `/Products/${shoe.image}` : fallBack} alt={shoe.image ? shoe.name : "Fall-back image"} />
                     </div>
                     <div className={styles["detail-wrapper"]}>
                         <div className={styles.details}>
