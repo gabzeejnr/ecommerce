@@ -1,0 +1,18 @@
+.wrap{
+    margin-bottom: auto;
+    display: grid;
+    place-items: center;
+
+    button{
+        background: var(--theme-color);
+        border: 1px solid var(--theme-color);
+        border-radius: 1rem;
+        width: 60%;
+        padding: .65em 1em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5em;
+    }
+}

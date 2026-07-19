@@ -1,0 +1,14 @@
+:root{
+    --theme-color: lab(72.7923% 26.9413 75.4637);
+    --text-color: black;
+    --bg: white;
+    --shadow: lightgray;
+}
+
+html{
+    scrollbar-width: none;
+}
+
+body{
+    margin: 0;
+}
