@@ -1,6 +1,4 @@
-import fallBack from "../../assets/Products/fallback.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
+import ProductCard from "../ProductCard/ProductCard.jsx";
 import styles from "./Products.module.scss";
 import { useState, useEffect } from "react";
 import { getShoes } from "../../services/services.js";
@@ -43,27 +41,9 @@ export default function Products({ likeCount, setLikeCount }) {
     return (
         <section className={styles.products}>
             {shoeData.map(shoe => (
-                <div className={styles.product} key={shoe.id}>
-                    <div className={styles["image-holder"]}>
-                        <div className={styles["hovered-element"]}>
-                            <div className={likedShoes[shoe.id] ? styles.liked : styles.heart} onClick={() => increaseLike(shoe.id)}>
-                                <FontAwesomeIcon icon={faHeart} />
-                            </div>
-                            <button>
-                                <FontAwesomeIcon icon={faEye} />
-                                &ensp; View details
-                            </button>
-                        </div>
-
-                        <img id="images" src={shoe.image ? shoe.image : fallBack} alt={shoe.image ? shoe.name : "Fall-back image"} />
-                    </div>
-                    <div className={styles["detail-wrapper"]}>
-                        <div className={styles.details}>
-                            <span className={styles.name}>{shoe.name}</span>
-                            <span className={styles.price}>${shoe.price}</span>
-                        </div>
-                    </div>
-                </div>
+                <ProductCard
+                    likedShoes={likedShoes} name={shoe.name}
+                    price={shoe.price} id={shoe.id} image={shoe.image} />
             ))}
         </section>
     )

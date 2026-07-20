@@ -13,7 +13,7 @@ export default function App() {
 
     const timer = setTimeout(() => {
       setIsLoading(prev => !prev)
-    }, 500);
+    }, 200);
 
     return () => clearTimeout(timer)
   }, []);

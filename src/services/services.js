@@ -1,5 +1,5 @@
 export async function getShoes() {
-    const url = "https://ecommerce-backend-ogas.onrender.com/api/shoes";
+    const url = "http://localhost:5000/api/shoes";
 
     try {
         const response = await fetch(url);
