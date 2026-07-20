@@ -1,0 +1,40 @@
+@use "../../../styles/mixins" as *;
+
+$shadow: 0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a;
+
+.shipping-card {
+    font-family: system-ui;
+    display: grid;
+    margin: var(--margin);
+    padding: var(--margin) calc(var(--margin) * 2);
+    border-radius: calc(var(--margin) + calc(var(--margin) / 4));
+    margin-bottom: calc(var(--margin) * 4);
+    box-shadow: $shadow;
+    height: fit-content;
+}
+
+.info {
+    display: flex;
+    height: fit-content;
+    gap: 1em;
+
+    .icon-holder {
+        padding: calc(var(--margin) - .3em);
+        background: transparent;
+        border: 2px solid var(--theme-color);
+        border-radius: var(--margin);
+        font-size: calc(var(--margin) * 1.2);
+        color: var(--theme-color);
+        @include complete-flex;
+        align-self: center;
+        font-size: calc(var(--margin) * 1.2);
+        min-height: calc(var(--margin) * 1.5);
+        min-width: calc(var(--margin) * 1.5);
+    }
+
+    p {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

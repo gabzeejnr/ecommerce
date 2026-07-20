@@ -22,5 +22,6 @@
 @mixin column-link{
     display: flex;
     flex-direction: column;
+    width: fit-content;
     gap: var(--margin);
 }

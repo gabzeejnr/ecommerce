@@ -4,10 +4,9 @@ $primary-margin: 1em;
 .this-wrapper {
     @include complete-flex;
     padding: $primary-margin;
-    outline: 1px solid;
 
     .image-holder {
-        border-radius: 1em;
+        border-radius: $primary-margin;
         overflow: hidden;
         width: 400px;
         height: 500px;
