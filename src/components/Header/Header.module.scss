@@ -1,5 +1,9 @@
 @use "../../styles/mixins" as *;
 
+*{
+    text-decoration: none;
+}
+
 header {
     position: sticky;
     top: 0;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Products from "./components/Products/Products.jsx";
-import Intro from "./components/Intro/Intro.jsx";
+import RoutePage from "./routes.jsx";
 import MainLayout from "./Layout/MainLayout.jsx";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -8,7 +7,6 @@ import "./App.css"
 
 export default function App() {
 
-  const [likeCount, setLikeCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,11 +30,7 @@ export default function App() {
 
   return (
     <>
-      <MainLayout likeCount={likeCount}>
-        <Intro />
-        <Products likeCount={likeCount}
-          setLikeCount={setLikeCount} />
-      </MainLayout>
+      <RoutePage />
     </>
   )
 }

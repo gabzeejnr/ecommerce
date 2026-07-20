@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartArrowDown, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.scss";
@@ -7,10 +8,11 @@ export default function Header({ leftTitle, rightTitle, likeCount }) {
 
     return (
         <header>
-            <h2>
-                <span className={styles.left}>{leftTitle}</span>
-                <span className={styles.left}>{rightTitle}</span>
-            </h2>
+            <NavLink to={"/"}>
+                <h2>
+                    <span className={styles.left}>{leftTitle}</span>
+                    <span className={styles.left}>{rightTitle}</span>
+                </h2></NavLink>
             <div className={styles.right}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                 <FontAwesomeIcon icon={faBars} />

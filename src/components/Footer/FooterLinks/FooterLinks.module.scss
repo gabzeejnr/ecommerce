@@ -1,0 +1,18 @@
+@use "../../../styles/mixins" as *;
+
+$margin: 1em 0 1.5em 0;
+
+.wrapper {
+    margin: $margin;
+
+    .text {
+        display: block;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 1em;
+    }
+
+    .links {
+        @include column-link
+    }
+}

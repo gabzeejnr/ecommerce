@@ -1,5 +1,4 @@
 import fallBack from "../../assets/Products/fallback.jpg";
-import AddToCart from "../AddToCart/AddToCart.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Products.module.scss";
@@ -46,7 +45,6 @@ export default function Products({ likeCount, setLikeCount }) {
             {shoeData.map(shoe => (
                 <div className={styles.product} key={shoe.id}>
                     <div className={styles["image-holder"]}>
-                        {console.log(shoe)}
                         <div className={styles["hovered-element"]}>
                             <div className={likedShoes[shoe.id] ? styles.liked : styles.heart} onClick={() => increaseLike(shoe.id)}>
                                 <FontAwesomeIcon icon={faHeart} />
@@ -64,7 +62,6 @@ export default function Products({ likeCount, setLikeCount }) {
                             <span className={styles.name}>{shoe.name}</span>
                             <span className={styles.price}>${shoe.price}</span>
                         </div>
-                        <AddToCart />
                     </div>
                 </div>
             ))}

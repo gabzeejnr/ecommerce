@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { data, socialMedia } from "../../data/companyData.js";
 import styles from "./Footer.module.scss";
-import FooterLinks from "../../FooterLinks/FooterLinks.jsx";
+import FooterLinks from "./FooterLinks/FooterLinks.jsx";
 
 export default function Footer({ leftName, rightName }) {
     return (
