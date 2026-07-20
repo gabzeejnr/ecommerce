@@ -1,0 +1,26 @@
+@use "../../../styles/mixins" as *;
+$primary-margin: 1em;
+
+.this-wrapper {
+    @include complete-flex;
+    padding: $primary-margin;
+    outline: 1px solid;
+
+    .image-holder {
+        border-radius: 1em;
+        overflow: hidden;
+        width: 400px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #FFF;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

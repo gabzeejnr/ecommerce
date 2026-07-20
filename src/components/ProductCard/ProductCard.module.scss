@@ -40,15 +40,19 @@
                     color: red;
                 }
 
-                button {
-                    background: var(--theme-color);
-                    border: 1px solid var(--theme-color);
-                    width: fit-content;
-                    height: fit-content;
-                    cursor: pointer;
-                    border-radius: 1em;
-                    padding: .5em 1em;
-                    margin: 0 auto;
+                a {
+                    display: flex;
+
+                    button {
+                        background: var(--theme-color);
+                        border: 1px solid var(--theme-color);
+                        width: fit-content;
+                        height: fit-content;
+                        cursor: pointer;
+                        border-radius: 1em;
+                        padding: .5em 1em;
+                        margin: 0 auto;
+                    }
                 }
             }
 
