@@ -26,12 +26,6 @@ export default function Products({ likeCount, setLikeCount }) {
 
     }, []);
 
-    function increaseLike(shoeId) {
-        const nowLiked = !likedShoes[shoeId];
-        setLikedShoes(prev => ({ ...prev, [shoeId]: nowLiked }));
-        setLikeCount(prev => nowLiked ? prev + 1 : prev - 1);
-    }
-
     if (isLoading) {
         return (
             <ProductLoader />
@@ -41,9 +35,9 @@ export default function Products({ likeCount, setLikeCount }) {
     return (
         <section className={styles.products}>
             {shoeData.map(shoe => (
-                <ProductCard
-                    likedShoes={likedShoes} name={shoe.name}
-                    price={shoe.price} id={shoe.id} image={shoe.image} />
+                <ProductCard key={shoe.id} setLikeCount={setLikeCount}
+                  likedShoes={likedShoes} setLikedShoes={setLikedShoes}
+                  shoe={shoe} />
             ))}
         </section>
     )
