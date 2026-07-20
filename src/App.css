@@ -13,3 +13,9 @@ html{
 body{
     margin: 0;
 }
+
+.Loader{
+    display: grid;
+    padding: 8px;
+    gap: 1em;
+}

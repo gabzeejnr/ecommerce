@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 
-.products {
+@mixin product-display {
     padding: 0 2em;
     display: grid;
     justify-content: center;
@@ -16,6 +16,14 @@
     gap: 1rem;
     font-family: system-ui;
     transition: all 1s;
+}
+
+.skeleton-wrap {
+    @include product-display;
+}
+
+.products {
+    @include product-display;
 
 
     .product {

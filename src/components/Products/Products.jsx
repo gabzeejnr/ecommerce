@@ -5,11 +5,13 @@ import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Products.module.scss";
 import { useState, useEffect } from "react";
 import { getShoes } from "../../services/services.js";
+import ProductLoader from "./ProductLoader.jsx";
 
 export default function Products({ likeCount, setLikeCount }) {
 
-    const [likedShoes, setLikedShoes] = useState({})
-    const [shoeData, setShoeData] = useState([])
+    const [likedShoes, setLikedShoes] = useState({});
+    const [shoeData, setShoeData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
@@ -18,18 +20,25 @@ export default function Products({ likeCount, setLikeCount }) {
             try {
                 const data = await getShoes();
                 setShoeData(data.shoes);
+                setIsLoading(false);
             } catch (error) {
                 console.error(error);
             }
         }
         fetchData();
 
-    }, [])
+    }, []);
 
     function increaseLike(shoeId) {
         const nowLiked = !likedShoes[shoeId];
         setLikedShoes(prev => ({ ...prev, [shoeId]: nowLiked }));
         setLikeCount(prev => nowLiked ? prev + 1 : prev - 1);
+    }
+
+    if (isLoading) {
+        return (
+            <ProductLoader />
+        )
     }
 
     return (
