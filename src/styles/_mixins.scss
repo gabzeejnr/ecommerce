@@ -11,3 +11,16 @@
     align-items: center;
     justify-content: center;
 }
+
+@mixin block-span {
+    display: block;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: var(--margin);
+}
+
+@mixin column-link{
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
+}
