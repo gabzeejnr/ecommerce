@@ -15,8 +15,12 @@ export default function Products({ likeCount, setLikeCount }) {
     useEffect(() => {
 
         async function fetchData() {
-            const data = await getShoes();
-            setShoeData(data.shoes);
+            try {
+                const data = await getShoes();
+                setShoeData(data.shoes);
+            } catch (error) {
+                console.error(error);
+            }
         }
         fetchData();
 
@@ -33,6 +37,7 @@ export default function Products({ likeCount, setLikeCount }) {
             {shoeData.map(shoe => (
                 <div className={styles.product} key={shoe.id}>
                     <div className={styles["image-holder"]}>
+                        {console.log(shoe)}
                         <div className={styles["hovered-element"]}>
                             <div className={likedShoes[shoe.id] ? styles.liked : styles.heart} onClick={() => increaseLike(shoe.id)}>
                                 <FontAwesomeIcon icon={faHeart} />
@@ -43,7 +48,7 @@ export default function Products({ likeCount, setLikeCount }) {
                             </button>
                         </div>
 
-                        <img id="images" src={shoe.image ? `/Products/${shoe.image}` : fallBack} alt={shoe.image ? shoe.name : "Fall-back image"} />
+                        <img id="images" src={shoe.image ? shoe.image : fallBack} alt={shoe.image ? shoe.name : "Fall-back image"} />
                     </div>
                     <div className={styles["detail-wrapper"]}>
                         <div className={styles.details}>

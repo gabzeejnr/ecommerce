@@ -5,7 +5,7 @@ export async function getShoes() {
         const response = await fetch(url);
 
         if (!response.ok) {
-            throw new Error("Couldnt fetch data");
+            throw new Error("Couldnt fetch products");
         };
 
         const data = await response.json();
