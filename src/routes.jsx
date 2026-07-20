@@ -1,7 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import Product from "./pages/About/Product.jsx";
+import Product from "./pages/Product/Product.jsx";
 
 export default function RoutePage() {
     return (
