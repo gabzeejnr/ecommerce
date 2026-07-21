@@ -7,6 +7,7 @@ import ProductImage from "../../components/Product/ProductImage/ProductImage.jsx
 import ProductInfo from "../../components/Product/ProductInfo/ProductInfo.jsx";
 import GoBack from "../../components/GoBack/GoBack.jsx";
 import ShippingInfo from "../../components/Product/ShippingInfo/ShippingInfo.jsx";
+import BuyThis from "../../components/BuyThis/BuyThis.jsx";
 
 export default function Product() {
 
@@ -31,8 +32,11 @@ export default function Product() {
             <GoBack />
             <section className={styles.wrap}>
                 <ProductImage shoe={shoe} />
-                <ProductInfo shoe={shoe} />
-                <ShippingInfo />
+                <div className={styles["another-wrap"]}>
+                    <ProductInfo shoe={shoe} />
+                    <ShippingInfo />
+                    <BuyThis />
+                </div>
             </section>
         </MainLayout>
     );

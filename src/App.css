@@ -5,10 +5,11 @@
     --shadow: lightgray;
     --margin: 1em;
     --grey: lightslategray;
+    font-family: system-ui;
 }
 
 html{
-    scrollbar-width: none;
+    
 }
 
 body{

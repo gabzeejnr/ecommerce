@@ -1,9 +1,15 @@
 .info {
     font-family: system-ui;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: calc(var(--margin) / 2);
     margin: var(--margin) calc(var(--margin) * 2);
     border-bottom: 1px solid var(--grey);
+
+    @media (min-width: 1024px) {
+        padding-top: calc(var(--margin) * 3);
+        border: none;
+    }
 
     h1 {
         margin: 0;

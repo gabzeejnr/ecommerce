@@ -3,8 +3,10 @@ import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { data, socialMedia } from "../../data/companyData.js";
 import styles from "./Footer.module.scss";
 import FooterLinks from "./FooterLinks/FooterLinks.jsx";
+import { Instagram } from "../../assets/SVGs/svg.jsx";
 
 export default function Footer({ leftName, rightName }) {
+
     return (
         <footer className={styles.footer}>
             <div className={styles["footer-wrap"]}>
@@ -32,7 +34,10 @@ export default function Footer({ leftName, rightName }) {
                     <div className={styles["social-media"]}>
                         {socialMedia.map((social, index) => (
                             <a href={social.link} key={index + 1}>
-                                <div><FontAwesomeIcon icon={social.icon} /></div>
+                                <div className={styles.icon}>
+                                    {social.name === "Instagram" ? <Instagram /> : <FontAwesomeIcon icon={social.icon}
+                                        style={{ color: social.color }} />}
+                                </div>
                             </a>
                         ))}
                     </div>
