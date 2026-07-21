@@ -1,0 +1,17 @@
+.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    padding: 0;
+    margin: 0;
+    margin-bottom: calc(var(--margin) * 5);
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
+
+    .another-wrap{
+        min-width: 90vw;
+    }
+}

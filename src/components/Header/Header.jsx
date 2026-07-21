@@ -21,7 +21,7 @@ export default function Header({ leftTitle, rightTitle, likeCount }) {
                     {likeCount > 0 ?
                         <div className={styles.count}>{likeCount}</div>
                         :
-                        <div></div>
+                        <div />
                     }
                 </div>
             </div>
