@@ -1,4 +1,22 @@
-.wrap{
+@use "../../styles/mixins" as *;
+
+.no-shoe {
+    display: flex;
+    @include complete-flex;
+    flex-direction: column;
+    gap: var(--margin);
+    min-height: 100vh;
+
+    button{
+        cursor: pointer;
+        padding: 10px;
+        border-radius: var(--margin);
+        background: var(--theme-color);
+        border: 2px solid var(--theme-color);
+    }
+}
+
+.wrap {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +29,11 @@
         flex-direction: column;
     }
 
-    .another-wrap{
-        min-width: 90vw;
+    .another-wrap {
+        min-width: 50vw;
+
+        @media (max-width: 1024px) {
+            align-self: flex-start;
+        }
     }
 }

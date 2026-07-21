@@ -7,13 +7,36 @@ import ProductImage from "../../components/Product/ProductImage/ProductImage.jsx
 import ProductInfo from "../../components/Product/ProductInfo/ProductInfo.jsx";
 import GoBack from "../../components/GoBack/GoBack.jsx";
 import ShippingInfo from "../../components/Product/ShippingInfo/ShippingInfo.jsx";
-import BuyThis from "../../components/BuyThis/BuyThis.jsx";
+import AddToCart from "../../components/Product/AddToCart/AddToCart.jsx";
+
+function NoShoe() {
+
+    const navigate = useNavigate();
+
+    return (
+        <section className={styles["no-shoe"]}>
+            Error Loading Data
+            <button onClick={() => navigate(-1)}>
+                Go Back
+            </button>
+        </section>
+    )
+}
 
 export default function Product() {
+
+    //========================================
+    //STATES & VARIABLES =====================
+    //========================================
 
     const { id } = useParams();
     const [shoe, setShoe] = useState("");
     const navigate = useNavigate();
+    const [quantity, setQuantity] = useState(0)
+
+    //========================================
+    //USE-EFFECTS ============================
+    //========================================
 
     useEffect(() => {
         async function testData() {
@@ -27,6 +50,14 @@ export default function Product() {
         testData();
     }, [id])
 
+    if (shoe === "Shoe not found.") {
+        return (
+            <>
+                <NoShoe />
+            </>
+        )
+    }
+
     return (
         <MainLayout>
             <GoBack />
@@ -35,7 +66,7 @@ export default function Product() {
                 <div className={styles["another-wrap"]}>
                     <ProductInfo shoe={shoe} />
                     <ShippingInfo />
-                    <BuyThis />
+                    <AddToCart />
                 </div>
             </section>
         </MainLayout>
