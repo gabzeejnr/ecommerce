@@ -30,8 +30,8 @@ export default function ProductCard({ likedShoes, setLikedShoes, setLikeCount, s
             </div>
             <div className={styles["detail-wrapper"]}>
                 <div className={styles.details}>
-                    <span className={styles.name}>{shoe.name}</span>
-                    <span className={styles.price}>${shoe.price}</span>
+                    <span className={styles.name}>{shoe.name ? shoe.name : "No name available"}</span>
+                    <span className={styles.price}>${shoe.price ? shoe.price : "0.00"}</span>
                 </div>
             </div>
         </div>

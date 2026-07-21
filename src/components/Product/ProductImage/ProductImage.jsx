@@ -4,7 +4,7 @@ export default function ProductImage({ shoe }) {
     return (
         <div className={styles["this-wrapper"]}>
             <div className={styles["image-holder"]}>
-                <img src={shoe.image} alt={shoe.name} />
+                <img src={shoe.image ? shoe.image : shoe.fallBack} alt={shoe.name} />
             </div>
         </div>
     )
