@@ -1,3 +1,5 @@
+$shadow: 0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a;
+
 @mixin color-split {
     color: var(--text-color);
 
@@ -19,9 +21,24 @@
     margin-bottom: var(--margin);
 }
 
-@mixin column-link{
+@mixin column-link {
     display: flex;
     flex-direction: column;
     width: fit-content;
     gap: var(--margin);
+}
+
+@mixin theme-button {
+    background: var(--theme-color);
+    border: 1px solid var(--theme-color);
+    border-radius: 1rem;
+    width: 150px;
+    padding: .75em 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    font-weight: 700;
+    box-shadow: $shadow, $shadow, $shadow, $shadow;
 }

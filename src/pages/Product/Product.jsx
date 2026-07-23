@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getShoeById } from "../../services/services.js";
+import { UseShoe } from "../../context/ShoeContext.jsx";
 import styles from "./Product.module.scss";
 import MainLayout from "../../Layout/MainLayout.jsx";
 import ProductImage from "../../components/Product/ProductImage/ProductImage.jsx";
@@ -30,25 +31,39 @@ export default function Product() {
     //========================================
 
     const { id } = useParams();
-    const [shoe, setShoe] = useState("");
-    const navigate = useNavigate();
-    const [quantity, setQuantity] = useState(0)
+    const [shoe, setShoe] = useState(null);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
+
 
     //========================================
     //USE-EFFECTS ============================
     //========================================
 
     useEffect(() => {
-        async function testData() {
+        async function loadShoe() {
             try {
+                setLoading(prev => !prev)
                 const data = await getShoeById(id);
-                setShoe(data)
+
+                if (!data || data === "Shoe not found.") {
+                    setError(prev => !prev)
+                } else {
+                    setShoe(data)
+                }
             } catch (error) {
                 console.error(error);
+                setError(prev => !prev)
+            } finally {
+                setLoading(prev => !prev)
             }
         }
-        testData();
+        loadShoe();
     }, [id])
+
+    if (!shoe) {
+        return <div>Loading product details...</div>;
+    }
 
     if (shoe === "Shoe not found.") {
         return (
@@ -66,7 +81,7 @@ export default function Product() {
                 <div className={styles["another-wrap"]}>
                     <ProductInfo shoe={shoe} />
                     <ShippingInfo />
-                    <AddToCart />
+                    <AddToCart shoe={shoe} />
                 </div>
             </section>
         </MainLayout>

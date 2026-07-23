@@ -1,3 +1,4 @@
+import { UseShoe } from "../../context/ShoeContext.jsx";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ProductCard from "../ProductCard/ProductCard.jsx";
@@ -22,44 +23,13 @@ function ProductLoader() {
     )
 }
 
-export default function Products({ likeCount, setLikeCount }) {
+export default function Products() {
 
-    const [likedShoes, setLikedShoes] = useState({});
-    const [shoeData, setShoeData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { shoeData, isLoading } = UseShoe();
     const [isTimeExpired, setIsTimeExpired] = useState(false);
 
 
-    useEffect(() => {
-
-        async function fetchData() {
-            try {
-                const data = await getShoes();
-                setShoeData(data.shoes);
-                setIsLoading(false);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        fetchData();
-
-    }, []);
-
-
-
     if (isLoading) {
-
-        /*useEffect(() => {
-            const timer = setTimeout(() => {
-                setIsTimeExpired(false);
-            }, 10000);
-
-            return () => clearTimeout(timer);
-        }, [])*/
-
-        const textStyle = {
-            textAlign: "center"
-        }
         return (
             <ProductLoader />
         )
@@ -68,9 +38,7 @@ export default function Products({ likeCount, setLikeCount }) {
     return (
         <section className={styles.products}>
             {shoeData.map(shoe => (
-                <ProductCard key={shoe.id} setLikeCount={setLikeCount}
-                    likedShoes={likedShoes} setLikedShoes={setLikedShoes}
-                    shoe={shoe} />
+                <ProductCard key={shoe.id} shoe={shoe} />
             ))}
         </section>
     )

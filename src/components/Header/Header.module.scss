@@ -1,6 +1,6 @@
 @use "../../styles/mixins" as *;
 
-*{
+* {
     text-decoration: none;
 }
 
@@ -22,8 +22,8 @@ header {
     }
 
     .right {
-        gap: 1rem;
         display: flex;
+        gap: 1rem;
         font-size: 1.5rem;
         color: rgb(92, 92, 92);
         font-weight: 100;
@@ -32,25 +32,56 @@ header {
             cursor: pointer;
         }
 
-        .wrap{
+        .wrap {
             display: grid;
-            align-items: center;
+            place-items: center;
 
-            .count{
-                position: absolute;
-                top: 1em;
-                right: .8em;
-                background: red;
-                height: 1.1em;
-                min-width: 1.1em;
-                padding: 0 .3em;
-                box-sizing: border-box;
-                border-radius: 1em;
-                color: var(--bg);
-                font-size: .5em;
-                line-height: 1;
-                font-weight: 600;
+            a {
+                color: rgb(92, 92, 92);
                 @include complete-flex;
+
+                .count {
+                    position: absolute;
+                    top: 1em;
+                    right: 5em;
+                    background: red;
+                    height: 1.1em;
+                    min-width: 1.1em;
+                    padding: 0 .3em;
+                    box-sizing: border-box;
+                    border-radius: 1em;
+                    color: var(--bg);
+                    font-size: .5em;
+                    line-height: 1;
+                    font-weight: 600;
+                    @include complete-flex;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .dropdown {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(12px);
+        top: 4.16em;
+        right: 0;
+        z-index: 99999;
+        height: 500px;
+        width: 300px;
+        border-radius: var(--margin) 0 0 var(--margin);
+        transition: animation 1.2s ease-out;
+        animation: slideIn 1.2s ease-in;
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(300px);
+            }
+
+            to {
+                transform: translateX(0);
             }
         }
     }

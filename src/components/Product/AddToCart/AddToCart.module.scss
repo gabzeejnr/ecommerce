@@ -14,17 +14,7 @@ $shadow: 0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a;
     }
 
     .cart {
-        background: var(--theme-color);
-        border: 1px solid var(--theme-color);
-        border-radius: 1rem;
-        width: 150px;
-        padding: .75em 1em;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: .5em;
-        font-weight: 700;
+        @include theme-button;
     }
 
     .quantity {
@@ -45,13 +35,13 @@ $shadow: 0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a;
         }
 
         .count {
-            height: calc(var(--margin) * 3);
-            min-width: calc(var(--margin) * 13);
+            height: calc(var(--margin) * 2);
             @include complete-flex;
             gap: .25em;
+            border-radius: 1rem;
+            min-width: calc(var(--margin) * 11);
             text-align: center;
-            box-shadow: $shadow;
-            border-radius: 20px;
+            box-shadow: $shadow, $shadow, $shadow, $shadow;
 
             & :nth-child(1) {
                 border-radius: 50% 0 0 50%;
@@ -80,7 +70,7 @@ $shadow: 0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a;
             }
         }
 
-        .error-text{
+        .error-text {
             font-weight: normal;
             color: red;
             font-size: 10px;
