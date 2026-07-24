@@ -1,14 +1,34 @@
 import { useCart } from "../../context/CartContext.jsx";
 import GoBack from "../../components/GoBack/GoBack.jsx";
 import MainLayout from "../../Layout/MainLayout";
+import { toFix } from "../../utils/functions.js";
 import styles from "./Cart.module.scss";
 
-function CartCard({ name, image, quantity, price, totalprice }) {
+function CartCard({ totalprice, shoe }) {
+
+    const { increaseQuantity, getQuantity, decreaseQuantity } = useCart();
 
     //IMAGE NAME PRICE QUANTITY
     return (
-        <div className={styles["cart-wrap"]}>
-            <div className={styles["image-holder"]}>
+        <div className={styles["cart-card"]}>
+            <div className={styles.left}>
+                <div className={styles["image-holder"]}>
+                    <img src={shoe.image} alt={shoe.name} />
+                </div>
+                <div className={styles["product-details"]}>
+                    <span className={styles.name}>{shoe.name}</span>
+                    <button>Remove</button>
+                </div>
+            </div>
+            <div className={styles.right}>
+                <div className={styles.quantity}>
+                    <button onClick={() => increaseQuantity(shoe)}>&#43;</button>
+                    <span>{getQuantity(shoe)}</span>
+                    <button onClick={() => decreaseQuantity(shoe)}>&minus;</button>
+                </div>
+                <div className={styles["total-price"]}>{totalprice}</div>
+            </div>
+            {/*  <div className={styles["image-holder"]}>
                 <img src={image} alt={name} />
             </div>
             <div className={styles.detail}>
@@ -18,7 +38,7 @@ function CartCard({ name, image, quantity, price, totalprice }) {
                     <span className={styles.quantity}>{quantity}</span>
                 </span>
                 <span className={styles.total}>Total: {totalprice}</span>
-            </div>
+            </div> */}
         </div>
     )
 }
@@ -41,17 +61,23 @@ export default function Cart() {
             {cart.length === 0 ? (
                 <p style={pStyle}>Nothing to see Here &#128075;</p>
             ) : (
-                <section className={styles["cart-wrapper"]}>
-                    {cart.map(buys => (
-                        <CartCard key={buys.id} name={buys.name}
-                            image={buys.image} price={buys.price}
-                            quantity={buys.quantity} totalprice={`$${Math.floor(buys.quantity * buys.price)}`} />
-                    ))}
-
+                <div className={styles.wrapper}>
+                    <span className={styles["span-wrap"]}>Your Shopping Cart  <span>{cart.length > 1 ? (`(${cart.length} items)`) : (`(${cart.length} item)`)}</span>
+                    </span>
+                    <section className={styles["cart-wrapper"]}>
+                        {cart.map(buys => (
+                            <CartCard key={buys.id} shoe={buys}
+                                totalprice={toFix(Math.floor(buys.quantity * buys.price))} />
+                        ))}
+                    </section>
                     <div className={styles.checkout}>
                         <button>Proceed to Checkout</button>
                     </div>
-                </section>
+                    <div className={styles["order-summary"]}>
+
+                    </div>
+                </div>
+
             )}
         </MainLayout>
     );

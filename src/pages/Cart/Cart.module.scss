@@ -12,64 +12,124 @@ $wrap-margin: calc(var(--margin) + calc(var(--margin) / 4));
     transition: all 1s;
 }
 
-.cart-wrap {
+.cart-card {
     @include complete-flex;
-    justify-content: flex-start;
-    height: calc(var(--margin) * 10);
-    gap: .5em;
-    padding: 0 10px 0 0;
-    border-radius: $wrap-margin 0;
-    box-shadow: $shadow;
-    overflow: hidden;
+    justify-self: center;
+    font-family: system-ui;
+    display: flex;
+    padding: 0 var(--margin);
+    border-radius: calc(var(--margin) + calc(var(--margin) / 4));
+    box-shadow: $shadow, $shadow;
+    height: clamp(10em, 11em, 12em);
+    width: 90vw;
 
-    .image-holder {
-        height: 100%;
-        width: 30%;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: .5s;
-        }
-    }
-
-    .detail {
-        width: 70%;
-        height: 100%;
+    .left {
         display: flex;
-        flex-direction: column;
-        padding: 5px 0 0 0;
+        gap: var(--margin);
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
 
-        .wrap {
-            display: flex;
+        .image-holder {
+            align-self: center;
+            height: clamp(50%, 70%, 80%);
+            width: clamp(50%, 70%, 80%);
+            overflow: hidden;
+            border-radius: var(--margin);
+            flex: 1;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: .5s;
+            }
+        }
+
+        .product-details {
+            display: grid;
+            flex: 4;
+            align-self: center;
+            gap: var(--margin);
 
             .name {
-                text-align: center;
+                font-weight: bold
             }
 
-            .quantity {
-                margin-left: auto;
+            button {
+                @include theme-button;
+                box-shadow: none;
+                background: transparent;
+                border: none;
+                width: fit-content;
+                height: fit-content;
+                padding: .5em;
+                color: oklch(63.7% 0.237 25.331);
+                transition: all .1s linear;
+
+                &:hover {
+                    background: var(--dark-theme-color);
+                    border: none;
+                    transform: scale(.9);
+                }
             }
-        }
-
-
-        .price {
-            font-weight: bold
-        }
-
-        .total {
-            font-weight: bold
         }
     }
 
+    .right {
+        height: 100%;
+        @include complete-flex;
+        margin-left: auto;
+        gap: 1em;
 
+        .quantity {
+            display: flex;
+            border: 1px solid var(--shadow);
+            border-radius: .5em;
+            align-items: center;
+
+            button {
+                color: #4A5565;
+                background: transparent;
+                border: none;
+            }
+
+            span {
+                font-size: 0.875rem;
+                line-height: calc(1.25 / 0.875);
+                padding-block: 0.25rem;
+                padding-inline: 12px;
+            }
+
+            @media (width >=40rem) {
+                :where(.sm\:space-x-8 > :not(:last-child)) {
+                    margin-inline-start: calc(calc(var(--spacing) * 8) * var(--tw-space-x-reverse));
+                    margin-inline-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-x-reverse)));
+                }
+            }
+        }
+
+        .total-price {
+            font-weight: bold;
+        }
+    }
 }
 
+.wrapper{
+
+    .span-wrap{
+        margin: 0 0 4em 2em;
+        font-weight: bold;
+
+        span{
+            font-weight: 100;
+            color: var(--theme-color);
+        }
+    }
+}
 .cart-wrapper {
-    @include product-display;
-    min-height: 100vh;
+    display: grid;
 }
 
 .checkout {
@@ -89,9 +149,11 @@ $wrap-margin: calc(var(--margin) + calc(var(--margin) / 4));
             100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(2.5px);
             }
+
             25%,
             75% {
                 transform: translateY(5px);
