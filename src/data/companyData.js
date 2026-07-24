@@ -25,7 +25,7 @@ export const socialMedia = [
     },
     {
         name: "X",
-        link: "https://x.com/gabee_jnr",
+        link: "https://x.com/gabzee_jnr",
         icon: faTwitter,
         color: "#1DA1F2"
     },

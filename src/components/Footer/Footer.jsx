@@ -33,7 +33,7 @@ export default function Footer({ leftName, rightName }) {
                     </div>
                     <div className={styles["social-media"]}>
                         {socialMedia.map((social, index) => (
-                            <a href={social.link} key={index + 1}>
+                            <a href={social.link} target="_blank" key={index + 1}>
                                 <div className={styles.icon}>
                                     {social.name === "Instagram" ? <Instagram /> : <FontAwesomeIcon icon={social.icon}
                                         style={{ color: social.color }} />}

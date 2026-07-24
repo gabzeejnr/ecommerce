@@ -1,5 +1,5 @@
 @use "../../styles/mixins" as *;
-$shadow: 0px 4px 8px -1px #0000001a, 0px 1px 2px -2px #0000001a;
+$shadow: 0px 1px 3px 0px var(--theme-color);
 $wrap-margin: calc(var(--margin) + calc(var(--margin) / 4));
 
 @mixin product-display {
@@ -15,7 +15,6 @@ $wrap-margin: calc(var(--margin) + calc(var(--margin) / 4));
 .cart-card {
     @include complete-flex;
     justify-self: center;
-    font-family: system-ui;
     display: flex;
     padding: 0 var(--margin);
     border-radius: calc(var(--margin) + calc(var(--margin) / 4));
@@ -116,29 +115,92 @@ $wrap-margin: calc(var(--margin) + calc(var(--margin) / 4));
     }
 }
 
-.wrapper{
+.main-wrap {
+    @include complete-flex;
+    flex-direction: column;
+    gap: 2em;
 
-    .span-wrap{
-        margin: 0 0 4em 2em;
-        font-weight: bold;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
 
-        span{
-            font-weight: 100;
-            color: var(--theme-color);
+        .span-wrap {
+            margin: 0 0 .5em 1em;
+            font-weight: bold;
+
+            span {
+                font-weight: 100;
+                color: var(--theme-color);
+            }
+        }
+    }
+
+    .order-summary {
+        display: grid;
+        padding: var(--margin) calc(var(--margin) * 2);
+        border-radius: calc(var(--margin) + calc(var(--margin) / 4));
+        margin-bottom: calc(var(--margin) * 4);
+        box-shadow: $shadow;
+        height: fit-content;
+        justify-self: center;
+        width: 80vw;
+
+        h4 {
+            margin: 0;
+            margin-bottom: 1.5em;
+        }
+
+        .summary {
+            display: grid;
+            gap: .75em;
+
+            .sum{
+                display: flex;
+
+                .right{
+                    margin-left: auto;
+                }
+
+                .right.green{
+                    color: green;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .total{
+           margin-top: 2em; 
+           font-weight: bold;
+           display: inline-flex;
+           align-items: center;
+
+           span{
+            margin-left: auto;
+            font-size: 20px;
+            color: green;
+           }
         }
     }
 }
+
 .cart-wrapper {
     display: grid;
+    gap: 1em;
 }
 
-.checkout {
-    padding: calc(var(--margin) * 2) 0;
+.checkout-btn {
+    margin-top: 2em;
+    width: 100%;
     display: grid;
     place-items: center;
 
     button {
-        @include theme-button;
+        width: 100%;
+        padding: 1em 0;
+        border-radius: var(--margin);
+        border: none;
+        background: var(--theme-color);
+        color: var(--bg);
         transition: all 1s ease-in-out;
         animation: bounce infinite 1s ease-in-out;
 

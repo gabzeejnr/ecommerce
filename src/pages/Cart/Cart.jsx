@@ -1,7 +1,7 @@
 import { useCart } from "../../context/CartContext.jsx";
 import GoBack from "../../components/GoBack/GoBack.jsx";
 import MainLayout from "../../Layout/MainLayout";
-import { toFix } from "../../utils/functions.js";
+import { toFix, sumCart } from "../../utils/functions.js";
 import styles from "./Cart.module.scss";
 
 function CartCard({ totalprice, shoe }) {
@@ -61,20 +61,44 @@ export default function Cart() {
             {cart.length === 0 ? (
                 <p style={pStyle}>Nothing to see Here &#128075;</p>
             ) : (
-                <div className={styles.wrapper}>
-                    <span className={styles["span-wrap"]}>Your Shopping Cart  <span>{cart.length > 1 ? (`(${cart.length} items)`) : (`(${cart.length} item)`)}</span>
-                    </span>
-                    <section className={styles["cart-wrapper"]}>
-                        {cart.map(buys => (
-                            <CartCard key={buys.id} shoe={buys}
-                                totalprice={toFix(Math.floor(buys.quantity * buys.price))} />
-                        ))}
-                    </section>
-                    <div className={styles.checkout}>
-                        <button>Proceed to Checkout</button>
+                <div className={styles["main-wrap"]}>
+                    <div className={styles.wrapper}>
+                        <span className={styles["span-wrap"]}>Your Shopping Cart  <span>{cart.length > 1 ? (`(${cart.length} items)`) : (`(${cart.length} item)`)}</span>
+                        </span>
+                        <section className={styles["cart-wrapper"]}>
+                            {cart.map(buys => (
+                                <CartCard key={buys.id} shoe={buys}
+                                    totalprice={toFix(Math.floor(buys.quantity * buys.price))} />
+                            ))}
+                        </section>
                     </div>
                     <div className={styles["order-summary"]}>
+                        <h4>Order Summary</h4>
+                        <div className={styles.summary}>
+                            <div className={styles.sum}>
+                                Subtotal
+                                <span className={styles.right}>{(cart.length === 1) ? (
+                                    toFix(cart[0].price * cart[0].quantity)
+                                ) : (
+                                    `$${sumCart(cart)}`)}
+                                </span>
+                            </div>
+                            <div className={styles.sum}>
+                                Shipping
+                                <span className={`${styles.right} ${styles.green}`}>Free</span>
+                            </div>
+                            <div className={styles.sum}>
+                                Estimated Tax
+                                <span className={styles.right}>{`$${0}`}</span>
+                            </div>
+                        </div>
 
+                        <span className={styles.total}>Total
+                            <span>$268.92</span>
+                        </span>
+                        <div className={styles["checkout-btn"]}>
+                            <button>Proceed to Checkout</button>
+                        </div>
                     </div>
                 </div>
 
