@@ -41,17 +41,18 @@ export default function Cart() {
             {cart.length === 0 ? (
                 <p style={pStyle}>Nothing to see Here &#128075;</p>
             ) : (
-                <section className={styles["cart-wrapper"]}>
-                    {cart.map(buys => (
-                        <CartCard key={buys.id} name={buys.name}
-                            image={buys.image} price={buys.price}
-                            quantity={buys.quantity} totalprice={`$${Math.floor(buys.quantity * buys.price)}`} />
-                    ))}
-
+                <>
+                    <section className={styles["cart-wrapper"]}>
+                        {cart.map(buys => (
+                            <CartCard key={buys.id} name={buys.name}
+                                image={buys.image} price={buys.price}
+                                quantity={buys.quantity} totalprice={`$${Math.floor(buys.quantity * buys.price)}`} />
+                        ))}
+                    </section>
                     <div className={styles.checkout}>
                         <button>Proceed to Checkout</button>
                     </div>
-                </section>
+                </>
             )}
         </MainLayout>
     );
