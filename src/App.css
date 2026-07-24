@@ -1,5 +1,6 @@
 :root{
     --theme-color: lab(72.7923% 26.9413 75.4637);
+    --dark-theme-color: lab(59.6% 25.35 66.11);
     --text-color: black;
     --bg: white;
     --shadow: lightgray;

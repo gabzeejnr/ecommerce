@@ -23,7 +23,7 @@ export default function Header({ leftTitle, rightTitle }) {
                 <div className={styles.wrap} onClick={(toggleCart)}>
                     <Link to={"/cart"}>
                         <FontAwesomeIcon icon={faCartArrowDown} />
-                        {cart.length > 0 ? <div className={styles.count}>{cart.length}{console.log(cart)}</div>
+                        {cart.length > 0 ? <div className={styles.count}>{cart.length}</div>
                             :
                             <div />
                         }

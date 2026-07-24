@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Page Header -->
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-8">
+                Your Shopping Cart <span class="text-orange-600 font-medium text-xl">(3 items)</span>
+            </h1>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <!-- Left Column: Cart Items List -->
+                <div class="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+
+                    <!-- Cart Item Row -->
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-between border-b border-gray-100 py-4 first:pt-0 last:border-b-0 gap-4">
+                        <div class="flex items-center space-x-4 w-full sm:w-auto">
+                            <img class="h-20 w-20 rounded-xl object-cover bg-gray-100"
+                                src="https://via.placeholder.com/150" alt="Product Image">
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900">Ergonomic Desk Chair</h3>
+                                <p class="text-sm text-gray-500">Color: Slate Gray</p>
+                                <button
+                                    class="text-xs font-medium text-red-500 hover:text-red-700 mt-2 flex items-center space-x-1 transition">
+                                    <span>Remove</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between w-full sm:w-auto sm:space-x-8">
+                            <!-- Quantity Controls -->
+                            <div class="flex items-center border border-gray-200 rounded-lg">
+                                <button
+                                    class="px-3 py-1 text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition rounded-l-lg">-</button>
+                                <span class="px-3 py-1 text-sm font-semibold text-gray-800">1</span>
+                                <button
+                                    class="px-3 py-1 text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition rounded-r-lg">+</button>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="text-right">
+                                <span class="text-lg font-bold text-gray-900">$249.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Order Summary Card -->
+                <div class="lg:col-span-4">
+                    <div class="bg-white rounded-2xl shadow-sm border border-orange-100 p-6 sticky top-6">
+                        <h2 class="text-lg font-bold text-gray-900 mb-4">Order Summary</h2>
+
+                        <!-- Summary Breakdown -->
+                        <div class="space-y-3 text-sm border-b border-gray-100 pb-4">
+                            <div class="flex justify-between text-gray-600">
+                                <span>Subtotal</span>
+                                <span class="font-semibold text-gray-900">$249.00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Shipping</span>
+                                <span class="text-emerald-600 font-semibold">Free</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Estimated Tax</span>
+                                <span class="font-semibold text-gray-900">$19.92</span>
+                            </div>
+                        </div>
+
+                        <!-- Promo Code Input -->
+                        <div class="mt-4 mb-6">
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="Promo code"
+                                    class="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500">
+                                <button
+                                    class="px-4 py-2 bg-orange-50 text-orange-600 text-sm font-semibold rounded-xl hover:bg-orange-100 transition">Apply</button>
+                            </div>
+                        </div>
+
+                        <!-- Total Price -->
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-base font-bold text-gray-900">Total</span>
+                            <span class="text-2xl font-black text-orange-600">$268.92</span>
+                        </div>
+
+                        <!-- Primary Call to Action -->
+                        <button
+                            class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-orange-500/25 active:scale-[0.98] transition-all duration-200">
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
